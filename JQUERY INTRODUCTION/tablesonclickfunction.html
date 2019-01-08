@@ -1,0 +1,331 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="./lib/jquery-3.3.1.min.js"></script>
+		<script>
+		
+		$(document).ready(function() {
+		$("a.on").click(function(){	
+			$("tr:nth-child(odd)").addClass("two");
+			$("tr:nth-child(even)").addClass("one");	
+			event.preventDefault();			
+			});
+			
+			$("a.off").click(function(){	
+				$("tr:nth-child(odd)").removeClass("two");
+				$("tr:nth-child(even)").removeClass("one");	
+				});
+				
+			
+
+			});
+
+		</script>
+			
+				
+		<style type="text/css">
+		table {border: 1px solid black; padding: 0;}
+				
+		th {background-color: #468a43; color: white; border: 1px solid black; padding: 2px;}
+		
+		td {padding: 4px; margin: 0;}
+		
+		tr.one {background-color: #dcdcdc;}
+
+		tr.two {background-color: #fcfcfc;}
+		
+		tr.one:hover {background-color: #39659a; color: white;}
+		
+		tr.two:hover {background-color: #39659a; color: white;}
+		
+		
+		
+		</style>
+		
+		<title>Zebra rows</title>
+	</head>
+	
+	<body>
+
+	<h1>Customer Sales</h1>	
+	
+	<a href="#" class="on">Turn on row highlights</a>
+	<br />
+	<br />
+	<a href="#" class="off">Turn off row highlights</a>
+	<br />
+	<br />
+	<table border="1" cellspacing="0">
+		<tr>
+			<th> Customer #</th> 
+			<th> Customer Name</th> 
+			<th> Salesman</th> 
+			<th>Country</th> 
+			<th>YTD Sales ($)</th>
+			<th>Contact Name</th>
+			<th>Phone Number</th>
+			<th>Credit Limit in dollars</th>
+			<th>Outstanding A/R Balance</th>
+
+		</tr>
+			
+		<tr>
+			<td>100007</td>
+			<td>A-1 Cycle City</td>
+			<td>Amy Schilling</td>
+			<td>United States</td>
+			<td>840677</td>
+			<td>Lloyd Dunlap</td>
+			<td>(626)253-2500</td>
+			<td>20000</td>
+			<td>15092.17</td>
+		</tr>
+		<tr>
+			<td>100004</td>
+			<td>A/B Cycle Shoppe</td>
+			<td>Rick Sterling</td>
+			<td>United States</td>
+			<td>700136	 </td>	
+			<td>Chris Leonard</td>
+			<td>(913)472-2138</td>
+			<td>5000</td>
+			<td>2020</td>
+		</tr>
+		<tr>
+			<td>100062</td>
+			<td>Accessory Zone</td>
+			<td>Sally Peterson</td>
+			<td>United States</td>
+			<td>686420	</td> 	
+			<td>Eric Williamson</td>
+			<td>(409)663-0200</td>
+			<td>40000</td>
+			<td>768</td>
+		</tr>
+		<tr>
+			<td>100005</td>
+			<td>Ace Hardware</td>
+			<td>Sal Stangarone</td>
+			<td>United States</td>
+			<td>548345	 </td>	
+			<td>Ralph Dunham</td>
+			<td>(319)753-0300</td>
+			<td>5000</td>
+			<td>4077.5</td>
+		</tr>
+		<tr>
+			<td>102053</td>
+			<td>Action Bikes</td>
+			<td>Scott Carlson</td>
+			<td>United Kingdom</td>
+			<td>123894	 	</td>
+			<td>Colin Romney</td>
+			<td>+4402070961836</td>
+			<td>20000</td>
+			<td>452</td>
+		</tr>
+		<tr>
+			<td>100031</td>
+			<td>Advanced Bicycles</td>
+			<td>Rick Sterling</td>
+			<td>United States</td>
+			<td>548340	 </td>	
+			<td>Michelle Henderson</td>
+			<td>(918)252-3512</td>
+			<td>10000</td>
+			<td>5493</td>
+		</tr>
+		<tr>
+			<td>102004</td>
+			<td>Aires Cycles</td>
+			<td>Patricia Renolds</td>
+			<td>Argentina</td>
+			<td>700136	</td> 	
+			<td>Javier Aguirre</td>
+			<td>+543409843221</td>
+			<td>5000</td>
+			<td>2020</td>
+		</tr>
+		<tr>
+			<td>100100</td>
+			<td>All Weather Cycles</td>
+			<td>Rick Sterling</td>
+			<td>United States</td>
+			<td>540339</td>	 	
+			<td>NA</td>
+			<td>(122)407-9797</td>
+			<td>40000</td>
+			<td>8875.54</td>
+		</tr>
+		<tr>
+			<td>102036</td>
+			<td>Alton Bicycles</td>
+			<td>Michael Coleman</td>
+			<td>Korea</td>
+			<td>229202	 </td>	
+			<td>Peter Christin</td>
+			<td>+820983440096</td>
+			<td>30000</td>
+			<td>562.54</td>
+		</tr>
+		<tr>
+			<td>101051
+			<td>Amardeep Cycles</td>
+			<td>Brian Kurtzman</td>
+			<td>India</td>
+			<td>456440	 </td>	
+			<td>Amardeep Sahni</td>
+			<td>+911230984931</td>
+			<td>15000</td>
+			<td>12980.78</td>
+		</tr>
+		<tr>
+			<td>100022
+			<td>Ames Supplies Inc.</td>
+			<td>Rick Sterling</td>
+			<td>United States</td>
+			<td>402046	</td> 	
+			<td>Sarah McCord</td>
+			<td>(715)234-5005</td>
+			<td>10000</td>
+			<td>125</td>
+		</tr>
+		<tr>
+			<td>100002</td>
+			<td>AAM-Equipto Bike Sales</td>
+			<td>Sally Peterson</td>
+			<td>United States</td>
+			<td>395102	</td> 	
+			<td>Enrique Lefevre</td>
+			<td>(513)299-2929</td>
+			<td>100000</td>
+			<td>65542.48</td>			
+		</tr>
+		<tr>
+			<td>100003</td>
+			<td>ABCO Corporation</td>
+			<td>Amy Schilling</td>
+			<td>United States</td>
+			<td>582056	</td> 	
+			<td>Sandra Levy</td>
+			<td>(312)457-1827</td>
+			<td>5000</td>
+			<td>231.04</td>
+		</tr>
+		<tr>
+			<td>101032</td>
+			<td>B.O.C</td>
+			<td>Scott Carlson</td>
+			<td>Germany</td>
+			<td>920250	</td>
+			<td>Elias Goers</td>
+			<td>+493849030932</td>
+			<td>20000</td>
+			<td>7657.98</td>			
+		</tr>
+		<tr>
+			<td>100008</td>
+			<td>Bernard's Schwinn Cyclery</td>
+			<td>Sal Stangarone</td>
+			<td>United States</td>
+			<td>589502	 </td>	
+			<td>Amy Dwyer</td>
+			<td>(312)386-2626</td>
+			<td>30000</td>
+			<td>26701.11</td>
+		</tr>
+		<tr>
+			<td>100038</td>
+			<td>Bicycle Barn</td>
+			<td>Amy Schilling</td>
+			<td>United States</td>
+			<td>925010	</td> 	
+			<td>Cedric Oppenheimer</td>
+			<td>(410)650-7676</td>
+			<td>45000</td>
+			<td>4863.89</td>
+		</tr>
+		<tr>
+			<td>101002</td>
+			<td>Bicycle Company e.U</td>
+			<td>Scott Carlson</td>
+			<td>Austria</td>
+			<td>395102</td>	 
+			<td>Maria Muster</td>
+			<td>+433420398466</td>
+			<td>100000</td>
+			<td>75649.47</td>			
+		</tr>
+		<tr>
+			<td>101022</td>
+			<td>Bike & Cicli</td>
+			<td>Scott Carlson</td>
+			<td>Switzerland</td>
+			<td>402046</td>	 
+			<td>Heinz Burgin</td>
+			<td>+413434002117</td>
+			<td>10000</td>
+			<td>125</td>			
+		</tr>
+		<tr>
+			<td>101068</td>
+			<td>Bike Brasil</td>
+			<td>Patricia Renolds</td>
+			<td>Brazil</td>
+			<td>454543</td>	 
+			<td>Daniel Souza</td>
+			<td>+550987509534</td>
+			<td>10000</td>
+			<td>765.45</td>			
+		</tr>
+		<tr>
+			<td>101018</td>
+			<td>Bike Center</td>
+			<td>Scott Carlson</td>
+			<td>Switzerland</td>
+			<td>948100</td>	 
+			<td>Maria Reichenbach</td>
+			<td>+412398200365</td>
+			<td>10000</td>
+			<td>112</td>
+		</tr>
+		<tr>
+			<td>101026</td>
+			<td>Bike Dream</td>
+			<td>Scott Carlson</td>
+			<td>Portugal</td>
+			<td>454534</td>	 	
+			<td>Bruno Ferraz</td>
+			<td>+351342339013</td>
+			<td>1000</td>
+			<td>444</td>
+		</tr>
+		<tr>
+			<td>102054</td>
+			<td>Bike Fix</td>
+			<td>Scott Carlson</td>
+			<td>United Kingdom</td>
+			<td>454404</td>
+			<td>Richard Atwater</td>
+			<td>+4402074051218</td>
+			<td>10000</td>
+			<td>1203.32</td>
+		</tr>
+		<tr>
+			<td>101062</td>
+			<td>Bike Hire Ireland</td>
+			<td>Scott Carlson</td>
+			<td>Ireland</td>
+			<td>686420</td> 
+			<td>Michael Doyle</td>
+			<td>+354349023425</td>
+			<td>30000</td>
+			<td>10098.32</td>
+		</tr>
+
+	</table>
+		
+	
+	</body>
+</html>		

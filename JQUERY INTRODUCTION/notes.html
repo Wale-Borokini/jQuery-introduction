@@ -1,0 +1,2443 @@
+				WHAT IS JQEURY?
+It is a free javascript library.
+Simplifies the task of creating highly responsive web pages.
+Works across modern browsers.
+Abstracts away browser-specific features, allowing you to concentrate on design.
+
+
+
+Most modern web development scenerios involve common patterns.
+		PAGE LOADS:
+	Perform a bunch of page setup.
+
+			EVENT:
+REtrieve content from the page>>>> Manipulate or animate the content>>>> Put the content back in the page. This may not be followed exactly, but the pattern is almost the same where the user does something & in response to that event, you have to somehow get content & manipulate it. jquery make these scenarios really easy. 
+
+
+			BENEFITS OF USING JQUERY
+1. Leverages your existing knowledge of css
+2. It is built to work with sets of elements.
+3. It allows us to perform multiple operations on a set of elements with one line of code. (known as statement chaining).It simplifies the way we work with javascript 7 elements in the page.
+4. jquery hides away lots of browser quirks (so you can concentrate on the end result). You don't spend a lot of time trying to figure out how to achieve each effect within each individual browser. You simply write to the jquery interface & jquery handles all the individual browser features behind the scene.
+5. It is really extensible. There are a lot of plug-ins that are available that performs all kinds of web development tasks. The jquery website contains hundreds of plug-ins that have been written by hundreds of people that you can just freely download and use in your own pages
+
+
+				JQUERY COMPATIBILITY
+It is currently compatible with modern vdrsions of all the main browsers in use today. It works with Internet Explorer, Safari, Chrome, Firefox & Opera
+
+
+CREATION OF A SIMPLE JQUERY-ENABLED PAGE
+1. Include a reference to the jQuery libary
+2. Install an event handler that responds to the page loading in the browser.
+3. Display an alert that indicates that the event handler was called and that jQuery is therefore working.
+
+
+THE on-load event only fires after all of the page content has downloaded, including images.
+It is also harder to add multiple load functions.
+JQuery provides a way to run code when the DOM of the page is ready. THIS is called the document.ready event.
+
+The code is written im such manner below:
+
+$ ("document").ready (function() {
+alert ("the page just loaded!") ;
+})
+
+*****anonymous function**
+
+You can write jQuery with the "$" and call functions with it.
+
+The above code will now execute when the DOM has loaded, instead of waiting for all the page content to finish downloading.
+Another advantage of this function is that you can call this "document.ready" function multiple times, and jQuery will chain together each one to be called in succession. This allows us to write multiple amount of codes to run when the page gets loaded & they can be contained in the javascript files & so on. 
+(We go to firstquery.html & load the page)
+
+
+///// 01 OVERVIEW OF JQUERY
+
+
+
+//////////////////OVERVIEW OF JQUERY FEATURES
+jQuery's features break down across eight major categories:
+
+Core Functionality:
+Implements core jQuery functions as well as commomly used utilities.
+
+Selection and Traversal:
+Provides functions for finding or extracting content in documents and navigating among the contents of the document. This is a lot of what the DOM is used for accross modern web development & it is a very key piece of jQuery's power. We can think of this as the "query" in the jQuery name.
+
+Manipulation & CSS:
+Provides functions for editing and changing documents content and working with CSS data such as positioning info. So we can think of this as the natural follow into the Selection & Traversal catgeory, where in that category you are finding contents and in the Manipulation & CSS category, you are manipulating it somehow.
+
+Events:
+Simplifies working with the modern DOM events and provides a lot of common event helper functions that cover some common scenarios that pop up in interactive designs in web pages
+
+Effects Category:
+This is where things begin to get interesting. This functions for creating some basic animations and effects, such as hiding and showing elements and moving objects around.
+
+Ajax:
+The Ajax categories provides utilities for working with Ajax, such as loading content from remote pages and dealing with JSON data.
+
+User Interface (UI)
+This is actually a plug-in. Provides an official plug-in with commonly used interface widgets, like slider controls, progress bars, accodions, dialouge etc.
+
+Extensibility:
+Enables the constructiom of jQuery plug-ins that enhance the functionality of the base library.
+
+We won't be covering the "Ajax" and "Extensibility" category because those are advanced. We will be sticking with the other six.
+
+
+
+////02 	RETRIEVING PAGE CONTENT
+
+
+
+////////JQUERY SELECTORS AND FILTERS: OVERVIEW
+We can use jquery to do almost nothing more than reetrieving contents from pages. This is one of jquery's best features. this is something that you will usually use the DOM for in the past & it is one of the things that jquery makes much easier.
+jQuery selectors and filters do essentially what thier name implies. They select contents from the documents so they can be manipulated using other functions. whether jQuery functions or native built-in javascript functions. You can think of jquery selectors and filters as the "query" part of jQuery.
+
+The way this works is that jQuery selectors will return an array that match the selection criteria that you give them.
+
+The filters operates on a selector to futher refine the results array that the selector returns.
+
+Essentially,You use a selector & it will create an array of objects or elements that are in the document & the filters will then futher refine them.
+
+It is important to note that this array is not a set of DOM elements. It is a collection of jQuery objects that are wrapped around the DOM & these jQuery objects provides
+a large number of predefined functions for futher operating on the objects. You can get access to the underlying DOM elements for each one of these objects if You want to, but the whole purpose of doing this is that you are wraping them in jquery objects so that you have a whole lot of convenient functions and high level ways of operating on them without having to result to the DOM in other to do that
+
+
+/////HOW TO USE SOME OF THE BASIC SELECTORS AND FILTERS IN JQUERY
+
+Basic jQuery selectors are based on the famliar CSS syntax. CSS-style selectors and filters are based on familiar CSS syntax, and work pretty much the same way as CSS does.
+The Selectors listed below corresponds with their CSS counterparts.
+
+If I pass in a "tagname", jQuery will find all elements that are named "tagname". And it applies to the others below:
+
+tagname >>>>>>>>>> Finds all elements that are named "tagname"
+
+#identifier >>>>>>> Finds all elements with the ID of "identifier"
+
+.className >>>>> Finds all elements that have a class attribute with the value of "ClassName"
+
+tag.className >>>>>> Gets elements of type tag that have a class attribute with the value of "className"
+
+tag#id.className >>>>> Retrieves the tag element that has an ID of id and a class attribute with the value of className
+
+* >>>>>>> Finds all the elements on the page
+
+
+How to use JQUERY VS the BROWSER DOM
+
+
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<ul id="list1">
+		<li class="a">item1</li>
+		<li class="a">item1</li>
+		<li class="a">item1</li>
+		<li class="a">item1</li>
+	</ul>
+	<p>This ia paragraph 1</p>
+	<p>This ia paragraph 2</p>
+	<p>This ia paragraph 3</p>
+	<p>This ia paragraph 4</p>
+</body>
+</html>
+
+
+Get <p> tags (DOM):
+Document.getElementsByTagName("p");
+
+And the avove line of code will get me all the paragragh tags.
+
+Get all <p> tags (jQuery):
+$("p")
+
+Then it comes out with a matched set or wrapped set matched element. Basically, it comes out with a list of tags that matches that parameter "p" tag.
+
+Get the tag with id "list1" (DOM):
+document.getElementById("list1");
+
+Get the tag with id "list1" (jQuery):
+$(#list1);
+
+
+Get all <li> tags with class "a" (DOM)
+It is a little bit more complicated. YOu will first use the getElementByTagName  function to get all the "li" tag then you have to write a "for loop" that will loop through all the results in that array & get the class attribute & compare it to this name right here "a" to see if it will be included in the result set. But jQuery does this for you. Using CSS synthax, all I have to do is to call the jQuery object, all I have to do is this expression below:
+
+$("li.a")
+
+Get all li tags with class "a" (jQuery):
+$("li.a");
+
+Get all tags with class "b". but only if they are inside a <ul> (jQuery):
+	$("ul .b");
+
+	(.b is a standard CSS synthax.   . means "class", # means "id")
+
+
+	HIERACHY AND COMBINATION SELECTORS
+	The hierachy and combination selectors allow you to get a little more advanced in selecting page content. It basically allows you to select elements based on hierachical relationships or a combination of criteria.
+
+
+
+If i pass in a coma delimited list (selector, selector,....)
+
+
+selector, selector,....  >>>>Finds all of the specified selectors.
+It will find all the elements that matches everything in the list.
+
+.class.class2  >>>>>>Finds all the elements that has both ">class1" and ".class2" in them. And they both have to be there.
+
+The below examples illustrates hierachical relationsgips 
+
+parent > child >>>>>>> this illlustrates hierachical relationships. this is used to find all child elements that are direct children of a certain parent
+
+ancestor descendant >>>>>> Finds all descendants elements that are contained within elements of the same anscestor. it is used to find a tag that appears anywhere under a particular anscestor.
+
+
+THE NEXT TWO HAS TO DO WITH SIBLINGS.
+
+prev + next >>>>>>> Finds all next elements that are next to a previous element. 
+
+
+prev ~ siblings >>>>>>>>>> Finds all sibling element that come after prev and match siblings selector. gets the sibling element that comes after the previous elements here.
+
+THE CODE:
+WE will use 	basicselector.html   here.
+
+We have given the paragraph a red border with the code in the html.
+
+
+$ ("document").ready (function() {
+$("p").css ("border","3px solid red");
+
+
+So lets do the same with ".a"   (a. class)
+
+$("a.").css ("border","3px solid red");
+
+
+
+Only the paragraphs with an ".a" has a red border.
+
+
+Let's try the  #id  selector.
+Let's put in "#list1"
+
+$("#list1").css ("border","3px solid red");
+
+
+"#list1" now has a border around it.
+
+
+Let's try all paragraphs that has ".b" (class .b) inside
+
+$("p.b").css ("border","3px solid red");
+
+
+And it works just fine.
+
+
+
+/////LET'S TRY SOME HIERACHICAL ONES NOW.
+WE will use   hiercombo.html   here.
+
+
+$("p, li.b").css ("border","3px solid red");
+
+
+With the above code, all the paragraphs "b" and everything with "b" will have a red background around them
+
+
+LET'S TRY THE DESCENDANT OPERATOR.
+The descendant operator basically will ask for things inside the Unordered List "ul"   & "li's"  with an "a" in them:
+
+$("ul li.a").css ("border","3px solid red");
+
+
+And our code is working.
+
+
+LET'S TRY THE "NEXT" OPERATOR
+
+SO WE SAY (give me the paragraph that is next to the "ul")
+
+$("ul + p").css ("border","3px solid red");
+
+THe next paragraph that is next to the list is now bordered with red.
+
+
+LET'S TRY THE SIBLINGS ONE
+(let's get the paragraph siblings of "list1")
+
+$("#list1 ~ p").css ("border","3px solid red");
+
+
+So we get the paragraph siblings of "#list1" in the browser
+
+
+
+
+////// FILTERS   ///////////
+jQuery selectors are very powerful utilities for selecting contents inside web pages. Now we are looking at a feature of jQuery that makes selectors even more powerful while retaining the CSS style utility that goes along with the selectors that we have already seen. And these are called FILTERS.
+Filters work in conjuction with selectors and they provide even more fine-grained control over how elements are selected in the document.
+
+JQUERY FILTERS FALL INTO SIX DIFFERENT CATEGORIES
+
+ BASIC:
+ Provides basic filtering, like getting the first, last and even-and odd-numbered items in a returned set from a selector.
+
+CONTENT:		(CONTENT BASED)
+Filters a set of elements based on the content, like whether an element contains a particular string.
+
+VISIBILITY:
+Visibility filters act on elements using the visibility setting of each element as a set. They will filter out elements that are hidden or visible.
+
+ATTRIBUTE:
+Attribute filters will examine a given attribute on an element. And they will use that attribute value to determine if it should be filtered out or included in the selector's result set.
+
+CHILD:
+Child filters select elements based upon their reletionship with their parent element.
+
+FORM:
+Form filters work on form elements & this can be used as really convinient powerful ways of processing elements in forms. Based upon what kind of form filter they are, whether they are enebled or not, whwther they are checked or not.
+
+
+BASIC JQUERY FILTERS:
+Basic filters allow you to refine the result of a jQuery selector by only including elements that match certain conditions.
+The below filters match up with CSS synthax
+
+
+:first >>>>>> Selects only the first instance of the selector's retirned set.
+
+:last >>>>>> Selects only the last instance of the selector's returned set.
+
+:even >>>>>> Selects only even-numbered elements in the selector's returned set or even-numbered elements that the selector came back with.
+
+:odd >>>>>> Selects only odd-numbered elements in the selector's returned set or odd-numbered elements that the selector came back with.
+
+
+:eq(n) >>>>>>> Filters out elements that are not positioned at the given index. we take an index & Filter out elements that are not positioned at the given index.It will only include elements that are at that index in the result set.
+
+:gt(n) (greater than)>>>>> Includes elements that are past the given index.
+
+:lt(n) (less than)>>>>>>>> Includes elements that are before the given index.
+
+:header >>>>>> THe header filter will select all header elements in the page (H1, H2, H3, DOWN TO H6)
+
+:animated >>>>>> Selects all the elements that are currently being animated by jQuery in some way. And we will use this in conjuction with the animation ability of jquery which we will get to later.
+
+:not(selector)>>>>> Includes elements that do not match the given selector. (negation Filter). The "not" filter takes a selector & that will include elements that don't match the given selector.
+
+LET's jump to the code & see how this filters work:
+
+THE CODE:
+WE will use   basicfilters.html   here.
+
+
+$("p:first").css ("border","3px solid red");
+
+What the above code will do is find the "first" paragraph tag & put a border around it.
+
+The code worked. THe first paragraph now has a border around it.
+
+
+Let's get a little more fancy.
+Let's try the "last" operator.
+
+$("p:last").css ("border","3px solid red");
+
+
+The code worked. THe last paragraph now has a border around it.
+
+
+LET'S DO THE EVEN-NUMBERED PARAGRAPH.
+
+$("p:even").css ("border","3px solid red");
+
+
+ThE EVEN NUMBER PARAHRAPH NOW HAS A BORDER AROUND THEM.
+Paragragh 1 & 3 are the even number paragraph in our code because jQuery starts off indexing at index "0" . 0, 1, 2, 3,....
+In the programming world, the ) based index is first.
+
+
+LET"S TRY "odd".
+
+$("p:odd").css ("border","3px solid red");
+
+
+The odd ones are highlighted in the browser.
+
+
+
+LET US TRY WITH SOME "CLASSES"
+Let;s try with the first instance of whatever has the "a" class.
+
+	$(".a:first").css ("border","3px solid red");
+
+
+AND FOR SURE, the first item with the ".a" (a class)is selected
+
+
+LET US TRY every "even" numbered thing that has "b" inside it
+
+
+$("b:even").css ("border","3px solid red");
+
+
+The items are being highlighted in the browser. (two items. 0, 1).
+
+
+LET'S TRY LOOKING AT paragraph tags, but only paragraph tags that are greater than "index1"
+
+$("p:gt(1)").css ("border","3px solid red");
+
+
+ONLY indexes 2 & 3 got HIGhligted.\ in the browser.
+
+
+LET US TRY THE "NOT OPERATOR"
+Let's try looking for "paragraphs" that are "not" "paragraphs" equal to "index2".
+It will find the paragraph at index number 2 & it will select all the paragraphs that are not that one.
+
+$("p:not(p:eq(2))").css ("border","3px solid red");
+
+
+THE RESULTS are exactly what we expected.
+
+
+
+/////////// ATTRIBUTE FILTERS ////
+Attribute filters provide the ability to futher filter out the result of a selector statement based upon attributes that are on the elements selected.
+
+BELOW is the list or a table of the available filter attributes:
+
+
+
+[attribute] >>>>>>>>>> Includes elements in the result set if they have the specified attribute or if the attribute exists on the element. It doesn't matter what value it is. It has to be there
+
+[attribute=value] >>>>>>> This checks to see if the attribute's value is equal to a value that you supply.
+
+[attribute!=value] Only includes elements in the result set if the attribute does not have the value that is listed here.
+
+[attribute^=value] >>>>>>>>>>Include elements that have the specified attribute & it starts with the specified value. It checks to see if the attribute starts with the string that you give here.
+
+[attribute$=value] >>>>>>>>> Include elements that have the specified attribute & it ends with the specified value. It checks to see if the attribute ends with the string that you give here.
+
+[attribute☆=value] >>>>>>>> Includes elements that have the specified attribute and it contains the specified value. It checks to see if the attribute contains the string that you have specified anywhere within the attribute value.
+
+[attrFilter1][attrFilterN]>>>>>>>>(this is more like a compound statement). It only includes elements that match all of the specified attribute filters. So you can put !,2,3. As many as you want on the filter statement.
+
+
+LET'S CODE:
+(we are using    attrfilters.html   here.)
+
+LET"S get started, I will write a jQery selection statement:
+
+
+$ ("document").ready (function() {
+		$("p[class]").css ("border","3px solid red");
+	});
+
+
+
+IN THE BROWSER, only "paragraph 1" & "paragragh 2" has the border.
+
+LET US TRY something different.
+Let's look for a paragraph, But I am only going to look for a paragraph that has an "id" attribute that is equal to "para1"
+
+	$("p[id=para1").css ("border","3px solid red");
+
+
+AND the code worked just fine.
+
+
+LET"S try one of the attribute filters that does the "start with".
+Let us find paragraphs that has the "id" attributes, but is has to start with the string "para"
+
+$("p[id^=para]").css ("border","3px solid red");
+
+
+
+"PARAGRAPH 2" AND "PARAGRAPH 4" now has the border
+
+
+
+/////NOW, LET'S TRY A MULTIPLE ATTRIBUTE REQUIREMENT.
+Now we are looking for paragraphs that have id's that start with "para" & it also have to contain a language attribute of "=en-"
+
+
+$("p[id^=para][lang*=en-]").css ("border","3px solid red");
+
+
+
+
+ONly the paragraph with the above element should be highlighted.
+
+
+Let's try breaking the expression to make sure it doesn't work when it shouldn't
+
+
+
+$("p[id^=para][lang*=ben-]").css ("border","3px solid red");
+
+
+And for sure, Nothing works.
+
+
+
+
+//////CONTENT, VISIBILITY FILTERS AND CHILD FILTERS /////
+(We are using   convisch.html   here.)
+
+
+We are looking at content visibility filtrs as well as child filters.
+You can examine the content of selected elements or their visibility property to determine whether they should be included or excluded from the final set.
+
+Content and visibility filters examine the content of the elements that are returned by the selector expression or their visibility property to determine if they should be included or excluded from the result set.
+
+THE CONTENT FILTER HAS FOUR OPTIONS:
+
+:contains(text)>>>>>> This is passed in text. Filters the selection to only include elements that contain the text string. and what happens is that jquery will look inside the child elements of the elements on the selector to see if they contain the text string  "(text)".
+
+:empty >>>>>> The empty filter only includes elements in the result set that has no child element inside them. It filters the selection to only include empty elements.
+
+:has(selector) >>>>>>> Matches elements that contain at least one element that has the specified selector. This will filter elements in the result set that contains at least one element that matches the selector that you have given.
+
+
+:parent >>>>>>> The parent content filter matches all elements that are parents (i.e they contain at least one other element, including text). It only match elements in the result set that are parents. At least they contain one other element including text elements
+
+
+
+
+/////FOR THE VISIBILITY FILTER, WE HAVE JUST TWO
+
+:visible >>>>>>>>>>>> Filters the selection to only include visible elements. Visible elements.
+
+:hiden >>>>>>>>>>>>>> Filters the selection to only include hidden elements. Not visible.
+
+
+
+
+////// CHILD FILTERS ////////////
+Child filters allows you to refine a selection by looking at the reletionship that the element has with it's parent element. You can refine a selector by examining the relationship each element has with its parent element.
+
+We are looking at Four options of child filters.
+The ":nth-child" has four options.
+
+:nth-child  >>>>>>> The :nth-child has a couple of things that we can do. IT matches elements at index, or even or odd increaments, or who match an equation of the form  Xn+M (for example, 2n or 3n+1) an "n" will start counting at "0". When the equation is calculated, that will be the index of the element that gets selected.
+
+
+:nth-child(index)
+
+:nth-child(even)
+
+:nth-child(odd)
+
+:nth-child(equation)
+
+
+
+:first-child >>>>>>>>>> Matches elements who are the first child of their parent.
+
+:last-child >>>>>>>>> Matches elements who are the last child of their parent.
+
+:only-child >>>>>>>>>> Matches elements who are the last child of their parent.
+
+
+
+LET US DO SOME CODING.
+
+Let's try something that says:
+get me the paragraph tag that contains the "text string" "3"
+
+SO, we put this in our code:
+
+
+$ ("document").ready (function() {
+	$("p:contains(3)").css("border", 3px solid red);
+});
+
+
+The paragraph that contains the text string "3" will be selected in our code.
+
+
+Let's try something different And interesting:
+
+Let's take off the "p". let's do "contained by itself". So what this will say is "I don't care what element it is, just get me all the elements the Text String "3".
+So with this code below, let's watch what happens in our browser.
+
+$(":contains(3)").css ("border","3px solid red");
+
+
+!!!Everything in the code got selected. this is because what we are asking jQuery to do is get all the elements with the "list item 3". Sure, the list item and the paragraph contains the "text string 3". But so does the "ul" And also the "body" tag which is the parent. and the parent of the "body" is the "html". that is why everything is being highlighted.
+This is an example where a result is unexpected if you are not keeping in mind the hierachical relationships that jQuery looks at when it is examining tags.
+So to limit what happens when you are using filters like "contains" & so on, you might want to put the scope in there that you are looking at.
+
+e.g:
+If you only wanted the "li" & the "p", You can say:
+
+$("li:contains(3),p:contains(3)").css("border","3px solid red");
+
+
+SO we get the elements with a string of "3" selected in our browser.
+
+Next example:
+Let's try the Parents Operator. We will get paragraphs that are parents. it will look at all the paragraph tags and if they contain another tag including text items, they will be included in the result set:
+
+$("p:parent").css("border","3px solid red");
+
+
+All the paragraphs got selected because they all contain content.
+
+LEt's try an example of the "has" operator.
+We wll look for an "ul" that "has" "li" in them That gas a class attribute in it equal to "a".
+
+
+$("ul:has(li[class=a])").css("border","3px solid red");
+ 
+
+This is a selector on its own. We are not selecting the list items "li" what we are selecting is the "ul". BUT WE ARE ONLY selecting the "ul" if it has a "li" that has a class that is equal to "a".
+
+
+In the browser, the "ul" was selected because it has a "li" that has that class.
+
+LEt's include this in the browser:
+
+$("ul:has(li[class=c])").css("border","3px solid red");
+
+
+THE "ul" is not highlighted anymore. Because there is no class "c".
+
+
+/////LET"S do a couple of "nth-child" examples.
+We are looking at the "ul" & we are going to look for "li" that the nth-child = (3).
+This says "get me the "li" that is the 3rd child that is inside a "ul" "
+
+
+$("ul li :nth-child(3)").css("border","3px solid red");
+
+
+IN the browser, the 3rd child is highlighted because that is the 3rd "li" that is inside the "ul".
+
+
+LET"S TRY list items, but we'll do "last child"
+
+$("ul li :last-child").css("border","3px solid red");
+
+
+
+AND the last "li" gets selected.
+ 
+
+LET"S  TRY THE EQUATION 
+
+$("ul li:nth-child(2n)").css("border","3px solid red");
+
+
+jQuery operates on elements that are "0" indexed based.
+But this is an exeption in using the nth-child operator & using the equation, the "N" variable starts counting at "1" not "0"
+
+But in the browser, it selected every other one. Items 1 & 3 were selected.
+
+
+Let's change this to "3n" 
+
+
+$("ul li:nth-child(3n)").css("border","3px solid red");
+
+
+
+
+/////// FORMS /////
+(We are using  formselectors.html)
+
+IN addition to providing sele ctors that works accross generic elements of documents, jQuery also has a set of selectors and filters that are just used for dealing with Form elements.
+They work pretty much like other selectors, but start with a colon (:) like a regular filters do.
+THese kind of selectors and filters makes it really easy to build form processing logic using jQuery. they prety much match up with the names of the form elements that you will find in the document.
+
+The available selectors for form elements below:
+
+
+:input >>>>>>>>> Finds all input, select, textarea, and button elements.
+
+:text >>>>>>>>> Find all text elements.
+
+:password >>>>>>>>>> Find all password elements.
+
+:radio >>>>>>>>>>>>>> Finds all radio button elements.
+
+:checkbox >>>>>>>>>>>>> Finds all checkbox elements.
+
+:submit >>>>>>>>>>>>>>>>> Finds all submit elements.
+
+:reset >>>>>>>>>>>>>>>> Finds all reset elements.
+
+:image >>>>>>>>>>>>>>>> Finds allimage elements.
+
+:button >>>>>>>>>>>>>>> Finds all button elements.
+
+:file >>>>>>>>>>>>>>>> Finds all file upload elements.
+
+
+
+
+These are the form filters that are available.
+
+:enabled >>>>>>>>>> Matches all form elements that are enebled.
+
+:disabled >>>>>>>>> Matches all elements that are disabled.
+
+:checked >>>>>>>>>>> Matches all form elements that are checked (radiobuttons and checkboxes). It applies only to radiobuttons & checkboxes
+
+:selected >>>>>>>>>>>>> Matches all form elements that are selected.
+
+
+For the the form, the first thing I will do is to select all of the input that are inside the form 
+
+
+$("form :input").css("border","3px solid red");
+
+
+
+We get all the elements selected here.
+
+
+Let's look for text elements in the form:
+
+$("form :text").css("border","3px solid red");
+
+
+ONly the text elements got selected here.
+
+Let's try adding some additional filters here: 
+
+Lets look for only elements that are "enabled"
+So, I will say inside the form, look for only text elements that are enebled:
+
+$("form :input:enabled").css("border","3px solid red");
+
+
+The disabled form didn't get selected, but the eneble got selected.
+
+Let's try "disabled"
+
+$("form :input:disabled").css("border","3px solid red");
+
+Only the disabled got selected.
+
+
+Let's look for checked items.
+SO , now we insert checked in our "tags"
+we will make the little boxes checked.
+
+We will now look for items that are checked:
+
+$("form :checked").css("border","3px solid red");
+
+
+SO THAT got everything that was checked.(but only on IE)
+
+
+
+Let's ask for elements in the "checkboxes" that happen to be checked.
+
+$("form :checkbox:checked").css("border","3px solid red");
+
+The above will be useful in trying to process a form.
+
+In the browser, only checkboxes that are "checked" are now being selected.(it worked only on IE)
+
+
+
+///////////// TRAVERSING DOCUMENT INFORMATION
+
+(we will use  traversing.html  here)
+
+Traversing across the information returned from a document is a very common operation & jquery provides a lot of functions that makes those processes easier.
+You can traverse the information returned from a document easily.
+
+The functions that jQuery makes available to help this process are listed below:
+
+
+size().length >>>>>>>>> The number of elements in the jQuery result set. We can use this information in conjuction with other jQuery functions to itterate over these items or do some other operations. This is used to check if the result of a jQuery expression came back with any element at all. The size & length works pretty much the sam way.
+
+get() >>>>>>>>>>>>> Returns an array of all matched DOM elements. Useful if you need to operate on the DOM elements themselves instead of using built-in jQuery functions. THis returns  an array of all the matched elements as DOM elements. In jQuery, the result set that comes back from a jQuery selection is not an array of DOM elements. THose DOM elements have been wrapped inside jQuery objects which have a lot of functionality built on top of them.
+
+get(index) >>>>>>>> Access a single matched DOM element at a specific index in the matched set. This version takes the index parameter & it will get us a single element at that index as the DOM element. 
+
+find(expression) >>>>>>> Searches for descendent elements that match the specified expression. This can be used to search inside a matched element for other elements that match the expression. e.g searching inside a <div> for images.
+
+each(fn) >>>>>>> Execute a function within the context of every matched element. This allows to loop over the contents of every element in the result set of a jQuery selection & executes a function against that element. This is a very powerful function in jQuery.
+
+Let's JUMP OVER TO THE CODE:
+The first thing we will do is use the length property to inspect the result set of jQuery selector. We will display an alert.
+
+alert("There are " + $("p").length + "<p> elements");
+
+
+And this should show me an alert of how many paragraph elements there are.
+
+
+We got an "alert" of "There are $ <p> elements".
+
+
+Just to show that we can use the "size" function as well.
+
+alert("There are " + $("p").size() + "<p> elements");
+
+
+The size isn't working on the latest version of jQuery.
+
+
+
+Let's use the "get" functions to retrieve the DOM elements. We will get an array of list items as DOM elements.
+
+
+var elems = $('li').get();
+alert("there are " + elems.length + "<li> tags");
+
+
+So we get an alert saying "there are 4 <li> tags"
+
+
+ This TIME< LET'S usejst the individual index operator on the "get" function. It will show us what kind of object is at index "0"
+
+alert($('li').get(0));
+
+
+
+There is an object, AND it is an HTMLLIELEMENT
+
+So that is working.
+
+LET's USE THE "FIND" FUNCTION.
+We are using the "find" function to find list items that have class "b" inside of the "ul" tag. We can accomplish this using selector operations. and we will use the same CSS trick.
+
+
+$("ul").find("li.b").css("border","3px solid red");
+
+
+All the list items that has "B" applied should have a border around them.
+
+
+And the code works.
+SO the "find" function found those list items
+ 
+
+LET'S USE THE "EACH" FUNCTION
+We will use the "each" function to apply progressively increasing value to the styles applied to the paragraph elements. We will make 2 variables:
+then write the jquery expression to find the paragraph tags.(for each paragraph tag, I want to execute a function)
+What this function will do is to set a css property for the border to be the value of the border variable. Basically, the border will get bigger each time
+
+border += 2;
+leftmargin += 10;
+
+
+var leftmargin = 0;
+var border = 3;
+$("p").each(function() {
+	$(this).css("border", border + "px solid red");
+	$(this).css("margin-left", leftmargin);
+	border += 2;
+	leftmargin += 10;
+})
+
+
+The code worked as expected.
+
+SO, THAT IS HOW TO JQUERY TO TRAVERSE ACCROSS A WEB PAGE.
+
+
+
+
+
+///////////CHAINING
+One of jQuery's most powerful features is it's ability to chain multiple functions together. And this allows us to perform several operations in just one line of code. jQuery terminology calls this statement chaining. eg:
+
+$(selector).fn1() .fn2() .fn3();
+
+			Statement chain
+
+The above code is a series of functions. THese functions will get executed in a series of order. Starting accross the left & going to the right.
+The selector will execute & come out with the result set of elements on the web page. And then, I can do multiple operations on those guys (the functions). I can assign css, I can manipulate the content, I can turn events on & off.
+The reason why this makes jQuery so powerful is that it allows you to perform multiple lines of code on one result set without having to get the result set over & over again like you might have to do in other scripting conventions.
+You can assign the result set to be operated on by multiple functions all in one line of code. WE WLL BE USING CHAINING LATER ON IN THIS COURSE, SO GET FAMILIAR NOW.
+
+
+///// ANNOTATING. USING AUTOPDF
+(We will use   autopdficons.html     here)
+
+We are going to take what we have learnt in jQuery so far using selectors and filters. And apply the knowledge to a practical example.
+
+let's get all of the links that have attribute named "href". And if the "href" ends with a ".pdf" string, then we will include a icon.(ends with symbol for an attribute filter is "$=" ).
+So we will insert an image that references the icon.
+
+We will insert an image after all of those instances
+ 
+ $("a[href$='.pdf']").after("<img src='./images/smallpdf.png' align='absbottom'/>");
+
+This will loop through all the links and it will find all the links that have an "href" that ends with ".pdf"
+
+
+And when we load the page, we get the icons beside the links that ends with ".pdf". we can put the icons "before", "after".
+
+With this code below, the .pdf files will have a yellow background:
+
+$("a[href$='.org']").css("background-color", "yellow");
+
+
+
+
+
+
+
+/////////MANIPULATING PAGE CONTENT.
+Retrieving contents from the page is pretty cool, Typically that is not enough. Usually you need ways to manipulate the page content once you have it. And luckily, jQuery gives us some really good ways of doing that. And that is what we will examine in this section.
+
+Once you've the selectors and filters to get the content out of the web page, Typically you are going to  do something with it. In addition to that. 
+There are times when you want to create new content to dynamically add into the page.
+For this purpose, You use jQuery's content manipulation functions.
+jQuery hes functions for creating, copying, deleting, and moving content around, as well as wrapping page content inside other content.
+
+In addition to manipulating contents, jQuery provides some realy good browser support for working with CSS, including positioning and sizing information.
+
+
+LET'S LOOK AT GETTING, CREATING AND SETTING CONTENT
+
+CREATING, SETTING, AND GETTTING CONTENT.
+
+
+To create new HTML content, You simply pass a string containing new HTML to the  "$()function:" $ means the  	(jQuery function)
+The result of the below statement will be a new jQuery object, a new wrapped element or a result set that contains the HTML that you have passed as the string. Since it is a string, it also works well if you want to pass in a variable.
+
+var newHeader = $("<h1>My New Header</h1>");
+var myStr = "<h1>My New Header</h1>";
+var newHeader = $(myStr);
+
+In addition to this method, you can use the html() and text () method to get and set content on elements.
+
+FUNCTIONS:
+
+html() >>>>>>>>>> Returns the HTML content of the first matched element that comes back from the selector's result set that you are calling this function on.
+
+html(newcontent) >>>>>>>>> Sets the HTML content of everysingle matched element in that set.
+
+text() >>>>>>>>> The text function works pretty much the same way as the others.Returns the text content of the first matched element.
+
+text(newtext) >>>>>>sets the text content for all matched elements
+
+
+THe main difference between "text" and "html" is that if you pass HTML code to HTML functions, it will actually create real HTML for you.
+If you try to pass a string into the text functions, however that contains HTML, The text function will automatically escape it for you. It will change angle brackets into text representations. It will not actuallly create HTML code.
+
+LET'S JUMP TO THE CODE AND LOOK AT SOME OF THESE IN ACTION.
+
+(We will use   creating.html     here)
+
+
+
+What we will do now is to test out the "HTML" function to see what it does.
+
+LEt's pass in a selector that gets us that "ul"  & let's get the "html" for it And let's display that in an "alert".
+
+
+$("document").ready(function() {
+	alert($("#list1").html ());
+});
+
+
+And we can see that the "alert"  is displaying the "html" contents that is inside of the "ul"
+
+
+Now LET'S CHANGE THE "HTML" of that list
+This time, we will set the html. And we will set the html to some new list item
+
+$("#list1").html("<li>This is a new list item</li>");
+
+
+All of the list items that are currently there will be blured away because we are changing the html that goes inside the "ul" tag
+
+
+When I loaded in the browser, all the list items were replaced by a new one.
+
+
+LET'S TRY creating some new contents
+We will pass a string to the jQuery object & we will make a new paragraph & then insert it somewhere.
+Let's get a reference to "paragraph 2"
+ANd the html will be set to "newItem" html
+
+var newItem = $("<p>This is a new paragraph</p>");
+$("#para2").html(newItem.html());
+
+
+
+If we load the page, we will see that the content of that paragraph have now been changed.
+
+
+
+Let's try one more thing, this time we'll use the text function.
+Let's get the last paragraph and we will set the text to be "This is the last paragraph"
+
+$("p:last").text("This is the last paragraph");
+
+We have looked at how we can create content using some basicjQuery features.
+
+
+
+
+///MANIPULATING ATTRIBUTES.
+(we are using  manipatt.html  here)
+
+Now let's talk about how you can manipulate the value of individual attributes on elements. jQuery provides a couple of functions for doing this and they are all named "attr"  in one way or the other.
+
+In the table below, we will see the various ways we can call the attribute function "attr".
+Ansd there is also a function for removing attributes  "removeAttr(name)"
+
+
+attr(name) >>>>>>>>>>>>>> Accesses property on the first matched element. This method makes it easy to retrieve a property value from the first matched element. If the element does not have an attribute with such a name, Undefined is returned. It is basically used to retrieve the value of an attribute
+
+attr(properties) >>>>>>>>>>> Sets a series of attributes on all matched elements using the regular javascript object notation syntax. This is the best used for setting large mumbers of properties at once. E.g below.
+
+$("img").attr({ src: "/images/hat.gif",
+title: "jQuery", alt: "jquery Logo"});
+
+
+attr(key, value) >>>>>>>>>>>>> Sets a single property to a value on all matched elements.
+
+attr(key,fn) >>>>>>>>>>>>>>>>>> Sets a single property(one property)to a computed value, on all matched elements. Instead of supplying a string value, a function is provided that computes the value of the attribute.
+
+removeAttr(name) >>>>>>>>>>>>>>>>>> Removes the named attribute from all matched elements.
+
+
+
+LET'S JUMP TO THE CODE AND LOOK AT SOME EXAMPLES.
+
+In the html, the image is wrapped inside of a link tag (<a href=""></a>).
+
+we will be manipulating the attributes  of this image using the jQuery attribute function
+
+Let's try a couple of different things. First, let's preview this in the browser. I can see that when I click on the image, It will go to the images folder
+
+Let's remove the "href" attribute.
+
+$("a").removeAttr("href");
+
+
+The Image is not a valid link anymore.
+So if you want to turn links on & off, this is a way to do it
+
+One last example:
+Let's try setting attributes as a property's object
+we will write a jQuery statement that gets the image.
+I will use an object to set the attribute.
+The src attribute will be a different image
+
+$("img").attr({src:"./images/spring.jpg", alt:"spring"});
+
+Whwn I loaded it, It changes the source of the image to the spring image & it also changes the alt tag(although we don't have a way of seeing that)
+This is how you can set multiple properties on a single object.
+
+
+//// INSERTING CONTENT
+(We use    insert.html    here)
+
+jQuery provides several functions for inserting content into the document & for modifying the DOM. We can insert contents into the document both before and after an existing page element. We can also insert contents inside of elements.
+
+There is a bunch of functions to do this:
+
+
+append(content) >>>>>>>>>>>>>>>> Appends content to the inside of every one of the matched element that this function is being called on.
+
+appendTo(selector) >>>>>>>>>>>>>> Appends all of the matched elements to another, specified, set of elements. The appenTo & prependTo works pretty much the same way on jquery selectors.
+
+prepend(content) >>>>>>>>>>>>> Prepends content to the inside of every matched element.(takes content & put it at the begginning)
+
+prependTo(selector) >>>>>>>>>>>> Prepends all the matched elements to another, specified. set of elements.
+
+after(content) >>>>>>>> Iserts content after each of the matched elements. An example of the "after" function was in the smallpdf icon page
+
+before(content) >>>>>>>>>> Inserts content after each of the matched elements.
+
+insertAfter(selector) >>>>>>>>>> Inserts all of the matched elements after another, specified, set of elements. They take jQuery selectors to insert before or after another set of matched elements that will match this selector.
+
+insertBefore(selector) >>>>>>>>> Inserts all the matched elements before another, specified, set of elements
+
+
+LET'S TAKE A LOOK AT SOME EXAMPLES TO SEE HOW THIS WORKS. (insert.html)
+
+Let's try out some of this functions:
+Let's write a jQuery statement for paragraphs. So I'm getting all the paragraphs in the document & I will append some content to them:
+ A string that says "with some content appended"
+
+$("p").append("with some content appended");
+
+
+When I loaded the page, Each one of the paragraphs now has the string, "with some content appended" on it.
+The content was appended to each one of the matched elements.
+
+If I am to do something like a "filter", then only those paragraphs will be affected.
+
+$("p:last").append("with some content appended");
+
+
+Only the "last" paragraph was affected.
+
+
+LET'S TO THE OPPOSITE (PREPEND)
+
+$("p").prepend("Hello!");
+
+The same thing will happen this time when we save & load.
+
+
+The word "hello" has been prepended. So it is at the beginning of every paragraph.
+
+
+NOW WE WILL USE THE "APPEND" TO & "PREPEND" TO FOR MANIPULATING THE DOM TREE.
+What we will do is get a jQuery accessor that says "get me the last paragraph & append that to the first paragraph":
+
+$("p:last").appendTo("p:first");
+
+
+Now, "paragraph 4" which used to be down at the butttom has now been appended to "paragraph 1".
+We took the "last" paragraph & appended it to the "first"
+
+Let's "prepend" To
+
+$("p:last").prependTo("p:first");
+
+
+When we load the page, We will see that the "last" paragraph Has been "prepended" in front of the "first" 
+paragraph
+
+
+
+
+///// WRAPPING, REPLACING AND REMOVING CONTENT
+WE are using ( wrapping.html ) here.
+
+We have seen how to insert & manipulate contents, but now we are doing more of additional operations like wrapping contents in a page, replacing it, copying it and removing it. All that great stuff.
+jQuery can wrap existing content in the page, replace content, copy content, and remove it. Below is a list of functions that you use in order to replace, copy and remove contents.
+
+There is a half a dozen function for wrapping content.
+
+
+
+
+wrap(html) >>>>>>>>>>> Wraps each matched element with the specified HTML content.
+
+wrap(element) >>>>>> Wraps each matched element with the specified element.
+
+wrapAll(html) >>>>>> Wraps all the elements in the matched set with the specified HTML content.
+
+wrapAll(element) >>>>> Wraps all the elements in the matched set into a single wrapper element.
+
+wrapInner(html) >>>>>>> Wraps the inner child contents of each matched element (including text nodes) with an HTML structure.
+
+wrapInner(element) >>>>> Wraps the inner child contents of each matched element (including text nodes) with a DOM structure. whether HTML or the DOM element that I am passing. e.g images can't have child elements inside them, so that won't work. If I call "wrapInner" on a "ul" tag and it has a whole bunch of "li's", Then all those "li" will be wrapped inside whwtever I pass in.
+
+replaceWith(content) >>>>>> Replaces all matched elements with the specified HTML or DOM elements.
+
+replaceAll(selector) >>>>>> Replaces the elements matched by the specified selector with the matched elements. This selector will be used to find which should be replaced by all the elements that are being called on.
+
+empty() >>>>>>>>>> Removes all child nodes from the set of matched elements.
+
+remove() >>>>>>>>>> Removes all matched elements from the DOM.
+
+clone() >>>>>>> Clone matched DOM elements and selects the clones. The clone function makes copies. IT takes a boolean arguement. If you pass "true", then it will clone not only the elements, but it also copy all the event handlers.
+
+clone(bool) >>>>>> Clone matched DOM elements, and their event handlers, and select the clones.
+
+
+
+
+LET'S LOOK AT SOME EXAMPLES IN THE CODE(wrapping.html)
+
+Let's do a couple of experiments here.
+
+Let's wrap all the paragraph tags & let's wrap each one into a "div" whoose style has been set to color "red".
+So all the text inside those divs should be "red"
+
+$("p").wrap("<div style='color:red'/>");
+
+
+Paragraph 2 & 4 do not have classes on them & they have now been changed to a "red" text. That's because these paragraphs do not have a style set. So their text color is being affected by the "div" that it was wrapped into.
+
+
+Let's try wrapping all of the paragraphs in a "div" whoose style is 'border:3px solid red'
+
+$("p").wrapAll("<div style='border:3px solid red'/>");
+
+
+The wrapAll function has taken all of the paragraphs & wrapped them inside a "div" whose border is now "red" & "3px" wide.
+
+
+Let's try the "remove empty" function.
+I will write an expression that gets the "ul" & I will call "empty"
+
+$("ul").empty();
+
+
+The "li" has now all been emptied out from the "ul".
+
+
+
+
+
+
+//////// JQUERY CSS FUNCTIONS
+jQuery css functions allows & provides easy cross-browser access for setting properties and working with positioning and sizing information for elements that are in your webpage.
+The css() function allow you to retrieve and set CSS styles for a set of matched elements, WE HAVE BEEN using the css functions in our examples in this course.
+
+IT HAS A FEW DIFFEENT Forms:
+
+
+
+
+css(name) >>>>>>>>>>>> Returns the value for the named CSS property for the first matched element that you have specified in the result set.
+
+css(properties) >>>>>>> (this is CSS with a "properties" arguement). This sets the CSS properties of every matched elements using an object-notation syntax:
+
+		var cssObj = {
+		'background-color' : '#ddd',
+		'font-weight' : ' ',
+		'color' : 'rgb(0,40,224)' }
+		$(this).css(cssObj);
+
+
+THE object-notation syntax is very similar to the attribute example that we saw earlier & the above example is creating an object that has a couple of properties and values to go with each one & then calling the CSS function with that object to set the properties on the results of a jQuery expression.
+
+
+css(property, value) >>>>>>>>> Sets a single property to a value on all matched elements. If a number is provided, it is automatically converted into a pixel value, with the following exeptions:z-index, font-weight, opacity, zoom, and line-height.
+It simply takes the name of the property, like width, height or whatever & sets it to whatever value given.
+IF YOU  JUST PROVIDE A NUMBER HERE RATHER THAN A STRING, IT WILL BE CONVERTED INTO A "pixel" value. just as stated above, z-index, font-weight.......
+
+
+
+jQuery provides a set of functions for working with CSS classes on page elements. This is used very commonly in things like animations or interactivity. It involves setting styles on elements and taking them off.
+
+Classes can be easily added, removed, toggled and detected. jQuery provides functions for adding, removing, toggling & detecting these classes & we can see those in the table below:
+
+
+
+addClass(class) >>>>>>>>> Adds the specified class(es) to each of the set of matched elements.
+
+hasClass(class) >>>>>>>> Returns "true" if the specified class is present on the least one of the set of matched elements.
+
+removeClass(class) >>>>>> Removes all the specified class(es) from the set of matched elements.
+
+toggleClass(class) >>>>>> Adds the specified class if it is not present, removes the specified class if it is present.
+
+toggleClass(class,switch) >>>>>>>> Adds the specified class if the switch is true, removes the specified class if the switch is false.
+
+
+
+
+
+////////////////CSS POSITIONING FUNCTIONS
+The CSS positioning functions provide cross-browser support for figuring out the positions of elements or where elements sre on the page. 
+
+
+AND THERE SEVERAL FUNCTIONS FOR THIS BELOW:
+
+
+ofset() >>>>>>>> Gets the current offset of the first matched element, in pixels, relative to the document. It comes back with an object that has a top & a left.
+
+offsetParent() >>>>>>>>>>> Returns a jQuery collection with positioned parent of the first matched element in a result set.
+
+position() >>>>>>>> Gets the top and left position of an element relative to its offset parent.
+
+scrollTop() >>>>>>>>>> Gets the scroll top offset of the first matched elements. It gets or sets for all the matched elements.
+
+scrollTop(value) >>>>>>>> Sets the scroll top offset to the given value on all matched elements.
+
+scrollLeft() >>>>>>>>> Gets the scroll lrft offset of the first matched element.
+
+scrollLeft(val) >>>>>>>> Sets the scroll left offset the given value on all matched element.
+
+
+
+
+WORKING WITH CSS SIZING INFORMATION.
+You can figure out how big elements are by using a vareity of functions that jQuery gives you. To retrieve cross-browser sizing information for elements, use the jQuery size related functions:
+
+
+
+
+
+height >>>>>>>>> Gets the current computed, pixel, height of the first matched element.
+
+height(val) >>>>>>>> sets the CSS height of every matched element.
+
+width() >>>>>>>>>>> Gets the current computed, pixel, width of the first matched element.
+
+width(val) >>>>>>>>> Sets the CSS width of every matched element.
+
+innerHeight >>>>>>>> Gets the inner height (excluding the border and including the padding) for the first matched element.
+
+innerWidth() >>>>>>>>> Gets the inner width (excluding the border and including the padding) for the first matched element.
+
+outerHeight(margin) >>>>>>>>>>> Gets the outer height (includes the border and padding by default) for the first matched element. If the margin argument is true, then the margin values are also included.
+
+outerWidth(margin) >>>>>>>>>>> Gets the outer width (includes the border and padding by default) for the first matched element. If the margin argument is true, then the margin values are also included. It will get the outerWidth as it is being computed by the browser.
+
+
+
+LET'S LOOK AT SOME OF THESE FUNCTIONS IN ACTIONS.
+(We are using   csssizing.html)
+
+We have a "div" with a background color of blue on the page & we are using some jQuery to compute various pieces of information about this object.
+
+In the HTML, We've got the  Height & width, the innerHeight & innerWidth, outerHeight, outerWidth, etc.
+
+
+I want to load the HTML page in another type of browser asides chrome.
+
+The values are pretty much the same for both browsers. up until the "offset" & "position"
+
+
+The "position" is being calculated by the position and the "offset" is being calculated by the offset.
+
+The offset are a little bit different for each of the browsers.
+
+So in the code, we used the "spans" to call each of the functions. The height, width,innerHeight, etc. Each browsers has a different way of measuring the "offset" and the "position".
+
+
+
+WE WILL TAKE WHAT WE HAVE LEARNT IN THIS CHAPTER AND THEN BUILD A PRACTICAL, FINISHED EXAMPLE. The example we are building is an automatic table of content for the document.
+(we will use   autotoc.html    here).
+IT CAN BE USED AS A FINISHED PRODUCT. RATHER THAN GOING THROUGH ALL THE EXPLANATIONS.
+
+
+The document has a whole lot  of text & headings in it.
+The table of contents contains a bunch of links that jumps to the various places in the document. So if we click on a particular heading, it jumps over to where the heading is on the page.
+these actions are being built up automatically by some jQuery code.
+So we will look at how to build that automatic TOC generator which will look through the document for various types of headers & then use those to build names anchors inside the document where we want to jump to.
+
+
+We call this function with 2 arguments:
+
+
+$("document").ready(function() {
+		buildBookmarks('h3', 'header');
+	});
+	function buildBookmarks(strWhichTag, sBookmarkNode) {
+	}
+
+
+The first is the the type of "header" tags that we want to serve as the "TOC" locations. The 2nd argument is the "id" of the Div that we want to append the resulting TOC into. It is the "div" with the id of "header" in the HTML.
+
+Each of the sections in the document is closed in a div & has a "id" & there's this "h3" tags that are at the top of each one of the sections.
+
+We will write a jQuery code that builds this "bookmark list".
+We will then write a jQuery statement that creates the "ul" that will serve as a table of content.
+
+	var oList = $("<ul id='bookmarksList'>");
+
+
+For each one of the header tags, we will do 2 things:
+1. we need to create a named anchor & insert it into the "header tag". Because it will serve as a jump location for the links in  the TOC.
+
+2. Then we need to add the link into the "ul"  that will point into the named anchor. (we will get all the Divs. The sections are all divided into Divs).
+We will write a jQuery that says "get me all the divs, but not the divs wher the "id" attribute is equal to "header" plu the <h3>
+
+
+So we are looking for h3's tha are inside the divs that are not the "header"  divs.
+
+
+	$("div:not([id=header]) " + strWhichTag);
+	)
+
+Then we use the "each" function & the each function will iterrate over each one of the contents that we find. Because there are 2 things that we have to do.
+
+function buildBookmarks(strWhichTag, sBookmarkNode) {
+		var cAnchorCount = 0;
+		var oList = $("<ul id='bookmarksList'>");
+		$("div:not([id=header]) " + strWhichTag).each(function() {
+
+We will then create the named anchor. we will have a unique way of naming our nameAnchor
+
+function buildBookmarks(strWhichTag, sBookmarkNode) {
+		var cAnchorCount = 0;
+		
+
+
+This takes the existing HTML for the "h3"  & out a named anchor right in front of it.
+
+
+function() {
+			$(this).html ("a name='bookmark" + cAnchorCount + "'></a>" + $(this).html());
+
+
+Then after the above, we then add our links to the list that we are creating:
+
+	Olist.append($("<li><a href='#bookmark" + cAnchorCount++ + "'>" + $(this).text() + "</a></li>"));
+
+
+After we have finished creating the content that will go in the list and the namesAnchor When the loop above terminates, We need to put the list of links we just created inside this "div"
+
+	$("#" + sBookMarkNode).append(oList);
+
+
+
+
+
+
+
+
+//////	EVENTS.
+We will handle working with events in jQuery.
+jQuery provides a mechanism for working with evets that is simpler than relying on the Document Object Model (DOM). 
+If you have ever worked with events in the modern web page, one of the things you will have noticed is that it is frustrating because the different browsers have different ways of working with the modern event interpretation. Specifically, IE has it's own way of attaching events to & disconnecting them from elements which is separate from the DOM level 2 specification. Which is what a lot of browsers folow.
+
+jQuery abstracts away the differencs between browser implementations.
+
+because jQuery works with sets of elements by default, it makes it easy to assign event handlers to groups of elements & objects by using selectors and filters.
+
+
+JQUERY EVENTS BASICALLY BREAKS DOWN INTO A GROUP OF CATEGORY:
+
+
+Bindind/&Unbinding Category.
+Allows events to be wired up and torn down in a cross-browser way. It allows to wire events up & take them off elements in a simple cross-browser way.
+
+
+Unified Event Object.
+Provides an event object that exposes the most common properties in a cross-browser way. In web dev in cross browsers with modern events, the event object is slightly diferent between IE & other browsers. jQuery solves that problem by creating a "unified" object that exposes the properties & methods that you use most commonly in a cross-Browser way.
+
+Convinience Features.
+There are bunch of convinience features. They provide functions that encapsulate common event features and cross-browser helper routines.
+
+
+
+///// BINDING.
+Events are connected to and disconnected from elements using the bind() and unbind() functions.
+Just like other jQuery functions, we use a selector to select a group of objects in the page that you want to place event handlers on. 
+To create an event handler, we use the "bind" function.
+To remove the event handler later on, you can use the "unbind".
+
+$(selector).bind(event,data,handler)
+$(selector).unbind(event,handler)
+
+LET'S LOOK AT HOW THE FUNCTIONS WORK FOR "BIND"
+Parameter >>>>>>>>>>>>>>>>>>>>>>> Purpose
+ One of the nice convinience thing about "bind" is that you can pass multiple event names for the event parameter in one string that is just seperated by space.
+
+
+event >>>>>>>> Defines the event that you want to be bound for each element in the selector's result set. Possibly values are blur, focus, load, resize, scroll, unload, beforeunload, click, dbclick, mousedown, mouseup, mousemove, mouseover, mouseout, mouseenter, mouseleave, change, select, submit, keydown, keypress, keyup, error. The above listed are string names.
+
+data >>>>>>>>>> (Optional).Defines a piece of data that will be passed to the handler function when the event happens and the handler function is called.
+
+handler >>>>>>> Specifies the function that will handle the event.
+
+
+
+/////UNBIND
+If you have the need to turn events "on" & "off"
+
+
+event >>>>>>>>>>>> Defines the event that you want to be disconnected for each element in the selector's result set. You pass the name of the function that you want to unbind.
+
+handler >>>>>>>>>>> Specifies the handler function that was defined to handle the event.
+
+
+LET'S JUMP OVER TO THE CODE:
+
+(we will use  bind.html  here)
+
+We have a "div" in the page & we will bind some events to this elements to make it change color & we will see if we can find a way to turn off events.
+
+Let's bind an event for the "mouseover" and then call the "highlight" Function
+
+
+AN event handler functions in jQuery always takes an event object parameter.
+We will set the "highlight" class on the "div"
+
+WHEN THE MOUSE GOES OVER THE BOX, IT WILL HIGHLIGHT.And we will call the same function for "mouseover" & "mouseleave" Because we are toggling the class.
+If "highlighted" is present, it will be taken off & if it is not there, it will be added on.
+
+$("#evtTarget").bind("mouseover", highlight);
+$("#evtTarget").bind("mouseleave", highlight);
+
+LET's LOAD the browser.
+ The box changes color when we move our mouse on it.
+
+ So, now let's bind the "click handler". The "click handler" will shut off the highlight function
+
+$("#evtTarget").bind("click", function() {
+});
+
+
+With the below code. when I click, the highlighting no longer works.
+
+
+$(function() {
+		$("#evtTarget").bind("mouseover", highlight);
+		$("#evtTarget").bind("mouseleave", highlight);
+
+		$("#evtTarget").bind("click", function() {
+		$("#evtTarget").unbind();
+		$("#evtTarget").unbind();
+		$("#evtTarget").html("<p>you turned off highlighting</p>");
+		});
+	});
+
+
+When I clicked, it changed the content & highlighting no longer works.
+
+
+
+
+///////CONVINIENT JQUERY HELPER FUNCTIONS
+jQuery provides several "helper" functions that can perform common event-related tasks. 
+
+$(selector).click(fn)
+$(selector).hover(fnOver, fnOut)
+$(selector).toggle(fn1, fn2, fn3, fn4...)
+
+We can also use some convinient jQuery helper functions to do handling for common events.
+jQuery peovides functions that happen to correspond with the names some common events. Such as the "click" function.
+In this case, instead of writing "bind" with the string "click", we simply call the "click" function & we supply the event handler.
+this convinient functions don't give a way to pass that optional data "parameter" To our event handler. But there are nice quick ways of "binding" of binding some very common events to elements.
+We don't have to use just "click",  we can use so many on the list below:
+There is shortcut for all the event names. all you do is use one of the strings that has the name of the function here & pass it a handler function to handle the event.
+And that makes the code a little bit more readable & a little bit more concise . If you need to pass data to the handler function, you can use one of the convinience strings
+
+
+click(fn) >>>>>> A shortcut for defining a click function handler. There are also shortcuts for: blur, change, dblclick, error, focus, keydown, keypress, keyup, load, mousedown, mouseenter, mouseleave, mousemove, mouseout, mouseover, mouseup, resize, scroll, select, submit, unload.
+
+hover(fnOver,fnOut) >>>>>> Helper function for hover behavior. fnOver is the function to call when the mouse enters, fnOut for when the mouse leaves. It takes 2 parameters (2 arguments)
+
+toggle(fn1, fn2, fn3, fn4,.....) >>>>>> Helper function for implementing clik toggling behavior. jQuery will call each function on every other click, starting with fn1, then fn2, then fn3, etc. The toggle function alternates between pairs of functions each time an element is clicked on.
+So when you click on it once, the "fn1" will be called & if you click on it again, function2 (fn2) will be called, and so on. 3rd click, 4th click, etc.
+
+
+THE CODE:
+(we will use  convinhp.html  here)
+
+
+When the page loads, we will do a couple of things:
+1. let's duplicate the "hover" functionality that we saw in the previous lesson by using hte hover function
+
+
+$(function() {
+	$("#evtTarget").hover(highlight, highlight);
+});
+
+function highlight(evt) {
+	$("#evtTarget").toggleClass("highlighted");
+}
+
+
+
+In the browser, The box color changes as we move our mouse over it.
+
+
+
+
+
+
+
+////////////JQUERY EVENT OBJECT.
+(we are using  eventobject.html   here)
+Writing event-handling code is frustrating when it differs across browser. There is a lot differences between the IE browsers and the browsers that use the DOM event model. One of the big differences is in the way the event object are implemented in both browsers.
+The IE event object & the DOM event object have a couple of properties that intersect.
+
+The jQuery event object smoothes these differences and provides a single object with the most important properties that you will use commonly.
+
+THE MOST common properties below:
+
+
+Function >>>>>>>>>>>>>>>>>>>>>>>>>>> Purpose
+
+type >>>>>>>>>>>>>>>>>>> Type of the event that the event object is representing. A string representing the event name.("click", e.g).
+
+target >>>>>>>>>>>>> element that issued the event. You can figure out in the page which element the event came from.
+
+data >>>>>>>>>>> Data passed to bind function. This is optional.
+
+pageX, pageY >>>>>>>>>>> Coordinates of mouse when the event happened, relative to document.
+
+result >>>>>>>>> Value returned by the last handler function as long as the "return" was no undefined.
+
+timestamp >>>>>>>>> Time when event occured. This is in milliseconds
+
+preventDefault() >>>>>>> Prevents the browser from executing whatever the default action for the event is. This essentially stops the event from causing whatever the browser normally do wuth it. e.g following a link.
+
+isDefaultPrevented() >>>>>>> Returns whether preventDefault() was ever called on this object.
+
+stopPropagation() >>>>>>>>>>> Stops the bubbling of an event up to the parent elements.
+
+isPropagationStopped()>>>>>>> Returns whether stopPropagation() was ever called on this object. You can see if stoppPropagation was ever called on this particular event object.
+
+
+
+THE CODE. 
+How to use the event object:
+
+
+
+		$(function() {
+			$("div").click(function(evt) {
+				$(this).html("pageX: " + evt.pageX + ", pageY: " + evt.pageY + ", type: " + evt.type + ", target: " + evt.target);
+			});
+		});
+
+
+
+With the above code, each time I click in the box, the mouse position is being updated.
+
+Let's see if it works CROSS-BROWSER.
+
+It works in cross-browsers.
+
+ WE WERE ABLE TO WRITE SOME CRSS-BROWSER HANDLING code that uses the "unified" object to get information about events that happened.
+
+
+
+
+
+/////////////MISCELLANEOUS JQUERY EVENT FUNCTIONS
+(we are using   miscevents.html    here.)
+These functions are basically provided by jQuery to handle a couple of specialized tasks. And those functions are the.
+1. "one" functions
+2. "trigger" functions
+3. "triggerHandler"
+
+
+$(selector).one(type, data, handler)
+$(selector).trigger(event, data)
+$(selector).triggerHandler(event, data)
+
+Function >>>>>>>>>>>>>>>>>>> Purpose
+
+
+
+One(type,data,handler) >>>>>>>>>>>>>>> The "one" function pretty much works like "bind", However the event handler is only ever going to be executed once for each one of the matched elements that the event is bound to.
+And you call this function only when you want the event handler to happen once. So the event will be bound 7 once the event gets triggered, It will not be responded to again.
+
+
+The below 2 functions are ways of triggering events from within code without having to wait for the user. 
+
+
+trigger(event,data) >>>>>>>>>>>>>>>>>>> Triggers an event on every matched element. This will also cause the default action of the browser to be executed. For example, passing 'click' to the   trigger() function  will also cause the browser to act as though the item were clicked. the browser will act like the user caused the event to happen
+
+
+triggerHandler(event,data) >>>>>>>>>>>>>>> Triggers all bound event handlers on an element (for a specific event type) without executing the browser's default actions, bubbling, or live events. 
+Only works on the first matched element in the result set for selectors.
+
+
+
+LET'S LOOK AT HOW THE "ONE" EVENT HANDLER WORKS IN THE CODE:
+
+
+What we have in the HTML is a series of "divs" & each one has a color & a border. And waht we will do is write some code that "binds" event handlers to these "divs" that only fire once.
+
+We will create an event handler that only fires the 'click' functions.
+
+Instead of using the "bind" function, we will use "one"
+
+
+With this code, when I click on the boxes, nothing happens anymore:
+
+
+		$(function() {
+			$("div").one("click", function(evt) {
+				$(this).css({ background: "red", cursor: "auto" });
+			});
+		});
+
+
+This is how to set an event handler that only happens once.
+
+LET'S MAKE SURE THIS WORKS IN CROSS-BROWSER.
+
+IT WORKS in Cross-browser. (the event handler is only happening one time)
+
+
+
+
+LET'S BUILD A PRACTICAL EXAMPLE IN OUR NEXT LESSON.
+
+We will build a function that automatically stripes and hover highlights a table
+
+We have a table in our HTML & we will stripe the tables automatically by jQuery. So as we stripe over the table, we see some effects.
+
+
+(we will use   tables.html    here)
+
+
+
+
+
+
+
+
+	////JQUERY ANIMATIONS AND EFFECTS
+jQuery library suplies basic animation and effects functions that perform common visual effects that are common in modern web pages such as:
+
+Showing and hiding elements.
+Fading elements in and out.
+Moving elements around on the screen.
+
+You can use the basic animation function to easily build your own animantion effects.
+
+
+Let's get started with some really simple animation 7 that involves showing and hiding elements.
+
+
+
+///////SHOWING AND HIDING PAGE ELEMENTS.
+Showing/hiding elements is simple.
+Elements can be shown or hidden immediately or over a specified duration of time.
+
+
+Function >>>>>>>>>>>>>>>>>>>>>>>>>> Purpose
+show() >>>>>>>>>> Displays each of the set of matched elements, if they are hidden.
+
+show(speed, callback) >>>>>>>>> Shows all matched elements using a graceful animation. Fires an optional callback after completion.
+
+Hide() >>>>>>>>>>>>>>> Hide each set of matched elements if they are shown.
+
+hide(speed, callback) >>>>>>>>> Hide all matched elements using graceful animation. Fires an optional callback after completion.
+
+toggle() >>>>>>>>>>>>>>>> Toggles displaying each of the set of matched elements.
+
+Toggle(switch) >>>>>>>>>>>>> Toggles displaying each of the set of matched elements based upon the switch (true shows all elements, false hides all elements)
+
+toggle(speed, callback) >>>>>>>>>> Toggles displaying each of the set of matched elements using a graceful animation and firing an optional callback after completion.
+
+
+We will use   (showhide.html)
+LET'S JUMP TO THE CODE
+We have got some nice big blue "div" in the browser.
+& there are some buttons below the "div" to trigger some functions.
+
+
+$(function() {
+		$("#show").click(function() {
+			$("#theDiv").show("normal");
+		});
+		$("#hide").click(function() {
+			$("#theDiv").hide("normal");
+		});
+		$("#toggle").click(function() {
+			$("#theDiv").toggle("slow");
+		});
+	});
+
+
+We can change the speed from "normal" to "slow".
+Or we can pass in duration of 5 seconds(5000) & pass in a call back that tells me that the animation is complete.
+
+
+$(function() {
+		$("#show").click(function() {
+			$("#theDiv").show(5000, function() {
+				alert("done showing");
+			});
+		});
+		$("#hide").click(function() {
+			$("#theDiv").hide("normal");
+		});
+		$("#toggle").click(function() {
+			$("#theDiv").toggle("slow");
+		});
+	});
+
+
+
+
+//// FADING ELEMENTS (fading.html)
+FADING ELEMENTS IN AND OUT.
+Fading elements in and out is also a common effect that you will see in modern web pages & jquery provides function for achieving this effect.
+
+Elements can be faded in or out completely or to a predetermined level of opacity. So that they are transparent
+
+The speed of the fade can be specified as either a string ("slow", "normal", or "fast") or a millisecond duration
+
+
+THERE ARE 3 ROUTINES THAT PERFORMS FADING.
+
+Function  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Purpose
+
+fadeIn(speed,callback) >>>>>>>>>>> Fades in all matched elements in the set by adjusting their opacity and firing an optional calback after completion.
+
+fadeOut(speed,callback) >>>>>>>>>> Fades out all matched elements by adjusting their opacity to "0" and then setting display to "none" and firing an optional callback after completion.
+
+fadeTo(speed,opacity,callback) >>>>>>>>>> Fades the opacity of all matched elements to a specified opacity and fires an optional callback after completion.
+For opacity, Anywhere between "0" And "1.0" will be the range that the object can be faded to.
+
+LET'S JUMP OVER TO THE CODE:
+
+we will use (fading.html)
+
+
+
+$(function() {
+		$("#fadein").click(function() {
+			$("#theDiv").fadeIn("normal");
+		});
+		$("#fadeout").click(function() {
+			$("#theDiv").fadeOut("normal");
+		});
+		$("#fadeto3").click(function() {
+			$("#theDiv").fadeTo("slow", 0.3);
+		});
+		$("#fadeup").click(function() {
+			$("#theDiv").fadeTo("slow", 1.0);
+		});
+	});
+
+
+We can control how fast we want the elements to fade. But if I want something to fade out very slowly, instead of using normal, I can specify a duration using "milliseconds". e.g (4000)= 4 seconds  & then supply a function that gets called when it is done.
+
+
+
+$(function() {
+		$("#fadein").click(function() {
+			$("#theDiv").fadeIn("normal");
+		});
+		$("#fadeout").click(function() {
+			$("#theDiv").fadeOut(4000, function() {
+				alert("done fading out");
+			});
+		});
+		$("#fadeto3").click(function() {
+			$("#theDiv").fadeTo("slow", 0.3);
+		});
+		$("#fadeup").click(function() {
+			$("#theDiv").fadeTo("slow", 1.0);
+		});
+	});
+
+
+("fadeto3" 30%)   ("fadeto1" 100%)
+
+
+The above code is working in the browser & it is also working cross-browser. 
+
+
+
+///// SLIDING (WE ARE using   sliding.html)
+
+The Sliding effect is another way to reveal or hide page elements in jQuery. These functions are not for hiding things around on the screen. This is for showing and hiding elements, but using a sliding effect.
+jQuery provides functions for sliding elements up or down, as well as toggling the slide animation based upon whether things are hidden or showing.
+(An example of sliding is on a web page where you click an option button & things slide into view from thin air).
+
+
+Function >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Purpose
+
+
+SlideDown(speed, callback) >>>>>>>>>> Reveals all matched elements by adjusting their height and firing an optional callback after completion. We can specify the speed in which the callback function happens.(the speed can be a string like "slow", "fast" or "normal")
+
+SlideUp(speed, callback) >>>>>>>>>>> Hides all matched elements by adjusting their height and firing an optional callback after completion.
+
+SlideToggle(speed, Callback) >>>>>>>>> Toggles the visibility of all matched elements by adjusting their height and firing an optional callback after completion.
+
+
+
+LET'S JUMP OVER TO THE CODE AND LOOK AT SOME EXAMPLES.
+(we are using   sliding.html)
+
+So when the page loads and the document is ready, the Toggle slide works pretty smoothly, and also the slideUp.
+We can easily slide the elements into and out of view.
+
+And the code works in cross-browser.
+
+
+
+
+
+CUSTOM ANIMATION.(we are using   custom.html)
+
+In addition to the pre-built animation functions that jQuery gives us, there is a basic animate function that you can use to create custom animation for a wide vareity of properties on page elements.
+
+To do that, You call the " animate () function "
+To stop animations in progress, call the    Stop()function
+
+
+THere are couple different versions of custom animations:
+
+
+animate(params, duration, easing, callback) >>>>> Creates a custom animation.
+params: The properties on the elements to animate.
+duration: The number of milliseconds the animation should take.
+easing: The type of easing function to use (linear or swing) There are only 2 built-in(although there are plug-ins that do more).
+callback: The function to call when the animation is complete. (the callback is optional)
+
+
+animate(params,options) >>>>>> Creates a custom animation.
+params: The properties to animate
+options:Set of options for the animation to take.
+
+stop() >>>>>>>>>>> Stops all the currently running animations on all the specified elements.
+
+
+
+Let's take a look at how to run the animate function in the code (We are using   custom.html):
+
+
+$(function() {
+		$("#right").click(function() {
+			$("#theDiv").animate({ width: "500px" }, 1000);
+		});
+		$("#text").click(function() {
+			$("#theDiv").animate({ fontSize: "24pt" }, 1000);
+		});
+		$("#toggle").click(function() {
+			$("#theDiv").animate({ left: "500" }, 1000, "swing");
+			});
+			});
+
+
+The above code is a custom animation.
+
+
+
+So, We will now add the "everything button & function & when the "everything button gets clicked, let's animate everything". We will animate the width, fontsize.
+
+I am passing in a parameter for the easing function. I am passing in "swing" which is kind of an easing function that makes the animation appear a bit more natural. I could also pass in "linear" if I want to & we will see what effect it has.
+
+Instead of animating one thing at a time, I've got a parameters object that will animate all of those properties over the course of one seconds.
+
+THE CODE:
+
+
+$(function() {
+		$("#right").click(function() {
+			$("#theDiv").animate({ width: "500px" }, 1000);
+		});
+		$("#text").click(function() {
+			$("#theDiv").animate({ fontSize: "24pt" }, 1000);
+		});
+		$("#toggle").click(function() {
+			$("#theDiv").animate({ left: "500" }, 1000, "swing");
+			});
+		$("#multiple").click(function() {
+			$("#theDiv").animate({ width: "500px", fontSize: "24pt", left: "500" }, 1000, "linear");
+			});
+		});
+
+
+
+Everything button below is ti be added to the HTML.
+
+<!-- <button id="multiple">Everything</button> -->
+
+Let's load it in the browser.
+
+And the code is working in cross-browser.
+
+
+Using the animate function, we can create some pretty complex animations just by specifying the parameters that you want to animate from and to the default.
+
+
+
+The starting value is whatever the stylesheet sets it to:
+
+
+<style type="text/css">
+			div#theDiv {
+				position:relative;
+				width: 250px;
+				height: 180px;
+				margin: 10px;
+				padding: 20px;
+				background: cyan;
+				border: 2px solid black;
+				cursor: pointer;
+			}
+											
+</style>
+
+
+And this is what the property will look like when the animation is complete:
+
+$("#theDiv").animate({ width: "500px" }, 1000);
+																	
+													
+So the "width" starts out at "250" and it will end at "500".
+And similarly for the rest of the properties as well.
+
+
+
+
+
+
+//////////ROTATOR.(WE are using  imagerotatorsimple.html)
+
+We will take what we have learnt about events and the pervious chapters & we will build pre-sofisticated effect. And what we will do is build an image rotator that has a nice fading effect in it.
+In the browser, over a couple of seconds, we have a slide show where the images are fading from one to the next. There are four images & each one is fading on top of the next.
+What we will do is build a cross-browser image rotator, and there are no plug-ins here. just pure javascript
+
+
+LET US JUMP TO THE CODE AND SEE HOW IT WORKS.
+
+
+All the images are positioned inside a "parent "div" and the parent div is named "photoShow". And we have got four divs inside the parent div & each divs contains an image.
+And the 1st div contains a class named "current".
+Inside each divs, there is an image pointing to a path & each one has a height and width.
+
+
+The PhotoShow image itself has a height and width applied & that matches the height and width of the images that I am rotating.
+And the divs inside the parent div are positioned asolutely. So this is causing the images to stack up underneath each other. 
+And by default, I am giving each image a z-index of "0". So it will be underneath at the buttom of the stack.
+Then there are two other stylesheets, one is called "previous" & the other is called "current". And the "current" style sheet basically has a z-index of "2" (So whichever div has that stylesheet applied, will be the one that is on top of all the other images).
+
+And there is another stylesheet named "previous", And it has a z-index of "1". So whichever div has this stylesheet will be directly under the "current"
+
+
+The code that sets up the image rotator:
+(we are using imagerotatorsimple.html)
+
+
+
+
+
+
+/////////JQUERY UI LIBRARY.
+The jQuery UI library provides a prebuilt set of functionality that gives your pages a polished professional look and feel.
+
+It is divided into 3 categories:
+1. Interactions
+2. Widget
+3. Effect
+
+
+INTERACTIONS:
+The interaction category is a set of behavior that you can reuse in your web pages & these interactions provide basic ways of letting users interact with things on the page. It has 5 interactions:
+Draggable, Droppable, Resizable, Selectable, Sortable. You can reuse these interactions in your pages. And the jQuery UI library uses them itself in its own widget.
+
+
+WIDGETS:
+There are 6 widgets:
+Accordion, Datepicker, Progressbar, Dialog, Slider, Tabs. They are all pre-built Widgets that we can use. And they rely on the "interactions" in the interactions category. These Widgets are themable. We can scheme these widgets using a theme roller that is provided on the jQuery UI website. 
+
+
+
+EFFECTS
+The jQuery UI effects category takes the basic effects provided by the jQuery library to the next level. they add a bunch of effects  that are not present in jQuery and they extend some of the basic ones as well. E.G  They have some of the effects that deals with adding and removing CSS classes & they extend the existing hide, show & toggle effects that the jQery library provides and they add ways of doing color animations which is not present in the basic jQuery libra
+
+
+///////////////////////////////////////////////////
+
+
+WIDGETS:
+The jQuery UI website is located at jqueryui.com. ANd the website provides a lot of features such as some downloadable themes. 
+We can also build our own download by clicking on the "build custom download link".
+
+
+ACCORDION.
+Accordion controls basically break contents into sections that can be expanded and revealed. Thw Accordian has a basic default functionality, But there are a lot of properties that you can set.
+We can use "noAutoHeight" function.
+
+
+
+
+
+
+AUTOCOMPLETE.
+Auto completion is a mechanism frequently used in modern websites to provide the user with a list of suggestions for the beginning of the word, which he/she has typed in a text box. The user can then select an item from the list, which will be displayed in the input field. This feature prevents the user from having to enter an entire word or a set of words.
+
+The autocomplete() method can be used in two forms :
+
+$(selector, context).autocomplete (options) Method
+
+$(selector, context).autocomplete ("action", params)
+
+
+$ (selector, context).autocomplete ("action", params) Method
+The autocomplete ("action", params) method can perform an action on the list of suggestions, such as show or hide. The action is specified as a String in the first argument (e.g., "close" to hide the list). Check out the actions that can be passed, in the following table.
+
+
+Syntax
+$(selector, context).autocomplete ("action", params);;
+The following table lists the different actions that can be used with this method −
+
+	Action & Description.
+
+1	close
+This action hides the list of suggestions in the Autocomplete menu. This method does not accept any arguments.
+
+2	destroy
+This action removes the autocomplete functionality. Lists of suggestions are deleted. This method does not accept any arguments.
+
+3	disable
+This action disables the autocompletion mechanism. The list of suggestions no longer appears. This method does not accept any arguments.
+
+4	enable
+This action reactivates the autocompletion mechanism. The list of suggestions will again be displayed. This method does not accept any arguments.
+
+5	option( optionName )
+This action retrieves the value of the specified param optionName. This option corresponds to one of those used with autocomplete (options).
+
+6	option
+This action gets an object containing key/value pairs representing the current autocomplete options hash.
+
+7	option( optionName, value )
+This action sets the value of the autocomplete option associated with the specified optionName. The argument optionName is name of the option to be set and value is the value to be set for the option.
+
+8	option( options )
+This action is sets one or more options for the autocomplete. The argument options is a map of option-value pairs to be set.
+
+9	search( [value ] )
+This action searches for correspondence between the string value and the data source (specified in options.source). The minimum number of characters (indicated in options.minLength) must be reached in value, otherwise the search is not performed.
+
+10	widget
+Retrieve the <ul> DOM element corresponding to the list of suggestions. This is an object of jQuery class that allows easy access to the list without using jQuery selectors.
+
+
+   EXTENSION POINTS
+
+The autocomplete widget can be extended as its built with the widget factory. When extending widgets, you have the ability to override or add to the behavior of existing methods. The following table lists methods that act as extension points with the same API stability as the plugin methods listed above.
+
+	Method & Description
+
+1	_renderItem( ul, item )
+This method controls the creation of each option in the widget's menu. This method creates a new <li> element, appends it to the menu and return it.
+
+2	_renderMenu( ul, items )
+This method controls building the widget's menu.
+
+3	_resizeMenu()
+This method controls sizing the menu before it is displayed.The menu element is available at this.menu.element. This method does not accept any arguments.
+
+Event Management on Autocomplete Elements
+In addition to the autocomplete (options) method which we saw in the previous sections, JqueryUI provides event methods which gets triggered for a particular event. These event methods are listed below −
+
+	Event Method & Description
+
+1	change(event, ui)
+This event is triggered when the value of the <input> element is changed based upon a selection. When triggered, this event will always come after the close event is triggered.
+
+2	close(event, ui)
+This event is triggered whenever the autocomplete menu closes.
+
+3	create(event, ui)
+This event is triggered when the autocomplete is created.
+
+4	focus(event, ui)
+This event is triggered whenever one of the menu choices receives focus. Unless canceled (for example, by returning false), the focused value is set into the <input> element.
+
+5	open(event, ui)
+This event is triggered after the data has been readied and the menu is about to open.
+
+6	response(event, ui)
+This event is triggered after a search completes, before the menu is shown. This event is always triggered when a search completes, even if the menu will not be shown because there are no results or the Autocomplete is disabled.
+
+7	search(event, ui)
+This event is triggered after any delay and minLength criteria have been met, just before the mechanism specified by source is activated. If canceled, the search operation is aborted.
+
+8	select(event, ui)
+This event is triggered when a value is selected from the autocomplete menu. Canceling this event prevents the value from being set into the <input> element (but doesn’t prevent the menu from closing).
+
+
+
+Check out the default functionality on(autocompleteexample.html).
+
+check out the autoFocus function on (autocomautofocus.html).
+
+check out the use of minLength and delay on (autocomminlength.html)
+
+check out the use of label on (autocomlabel.html)
+
+Check out the use of External Source on (autocomexternalsrc.html)
+
+(See how to use the   option( optionName, value )   method. In the autocomoptval.html )
+
+Check out the use of events focus and select on (autocomevtsfocsel.html)
+
+
+
+BUTTON.
+
+jQueryUI provides button() method to transform the HTML elements (like buttons, inputs and anchors) into themeable buttons, with automatic management of mouse movements on them, all managed transparently by jQuery UI.
+
+In order to group radio buttons, Button also provides an additional widget, called Buttonset. Buttonset is used by selecting a container element (which contains the radio buttons) and calling .buttonset().
+
+
+The button() method can be used in two forms −
+
+$(selector, context).button (options) Method
+
+$(selector, context).button ("action", params) Method
+
+
+
+$ (selector, context).button (options) Method
+The button (options) method declares that an HTML element should be treated as button. The options parameter is an object that specifies the behavior and appearance of the button.
+
+Syntax
+$(selector, context).button (options);
+You can provide one or more options at a time using Javascript object. If there are more than one options to be provided then you will separate them using a comma as follows −
+
+$(selector, context).button({option1: value1, option2: value2..... });
+The following table lists the different options that can be used with this method −
+
+	Option & Description
+
+1	disabled
+This option deactivates the button is set to true. By default its value is false.
+
+2	icons
+This option specifies that one or two icons are to be displayed in the button: primary icons to the left, secondary icons to the right. The primary icon is identified by the primary property of the object, and the secondary icon is identified by the secondary property. By default its value is primary: null, secondary: null.
+
+3	label
+This option specifies text to display on the button that overrides the natural label. If omitted, the natural label for the element is displayed. In the case of radio buttons and checkboxes, the natural label is the <label> element associated with the control. By default its value is null.
+
+4	text
+This option specifies whether text is to be displayed on the button. If specified as false, text is suppressed if (and only if) the icons option specifies at least one icon. By default its value is true.
+
+$ (selector, context).button ("action", params) Method.
+
+The button ("action", params) method can perform an action on buttons, such as disabling the button. The action is specified as a string in the first argument (e.g., "disable" to disable button). Check out the actions that can be passed, in the following table.
+
+Syntax
+$(selector, context).button ("action", params);
+The following table lists the different actions that can be used with this method −
+
+	Action & Description
+
+1	destroy
+This action removes the button functionality of an element completely. The elements return to their pre-init state. This method does not accept any arguments.
+
+2	disable
+This action disables the button functionality of an element. This method does not accept any arguments.
+
+3	enable
+This action enables the button functionality of an element. This method does not accept any arguments.
+
+4	option( optionName )
+This action retrieves the value of the option specified in optionName. Where optionName is a String.
+
+5	option
+This action retrieves an object containing key/value pairs representing the current button options hash.
+
+6	option( optionName, value )
+This action sets the value of the button option associated with the specified optionName.
+
+7	option( options )
+This action sets one or more options for the button. Where options is map of option-value pairs to set.
+
+8	refresh
+This action refreshes the display of the button. This is useful when the buttons are handled by the program and the display does not necessarily correspond to the internal state. This method does not accept any arguments.
+
+9	widget
+This action returns a jQuery object containing the button element. This method does not accept any arguments.
+
+
+Event Management on Buttons
+
+In addition to the button (options) method which we saw in the previous sections, JqueryUI provides event methods which gets triggered for a particular event. These event methods are listed below −
+
+	Event Method & Description
+
+1	create(event, ui)
+This event is triggered when the button is created. Where event is of type Event, and ui is of type Object.
+
+
+
+////////// HTML PAGES FOR EXAMPLES:
+
+The following example demonstrates a simple example of button widget functionality, passing no parameters to the button() method. (we are using buttondflt.html)
+
+
+Use of icons, text and disabled.
+The following example demonstrates the usage of two options icons, text and disabled in the button function of JqueryUI. We are using (buttonicntxtdis.html)
+
+
+following example demonstrates the use of destroy() and disable() methods. We are using (butttondesdis.html)
+
+
+This example demonstrates the use of event create. We are using (buttonevtcreate.html)
+
+
+
+Checkboxradio
+
+Controlgroup
+
+Datepicker
+
+
+
+
+
+Menu
+
+Progressbar
+
+Selectmenu
+
+Slider
+
+Spinner
+
+Tabs
+
+Tooltip
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

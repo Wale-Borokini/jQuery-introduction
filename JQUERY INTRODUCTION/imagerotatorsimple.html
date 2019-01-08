@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="">
+<head>
+	<title>Image Rotator</title>
+	<script type="text/javascript" src="./lib/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript">	
+	function cycleImages(){
+      var $active = $('#cycler .active');
+      var $next = ($active.next().length > 0) ? $active.next() : $('#cycler img:first');
+      $next.css('z-index',2);//move the next image up the pile
+      $active.fadeOut(1500,function(){//fade out the top image
+	  $active.css('z-index',1).show().removeClass('active');//reset the z-index and unhide the image
+          $next.css('z-index',3).addClass('active');//make the next image the top one
+      });
+    }
+
+$(document).ready(function(){
+// run every 7s
+setInterval('cycleImages()', 2000);
+})
+	</script>
+<style type="text/css">
+#cycler{position:relative;}
+#cycler img{position:absolute;z-index:1}
+#cycler img.active{z-index:3}
+</style>
+</head>
+<body>
+
+<div id="cycler">
+<img class="active" src="./images/kja.jpg" width="400" height="400" alt="My image" />
+<img src="./images/fst.jpg" width="400" height="400" alt="My image" />	
+<img src="./images/bdg.jpeg" width="400" height="400" alt="My image" />	
+<img src="./images/lnd.jpg" width="400" height="400" alt="My image" />		
+</div>
+
+</body>
+</html>

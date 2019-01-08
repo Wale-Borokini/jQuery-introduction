@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html xmlns="">
+<head>
+	<title>Document</title>
+	<script type="text/javascript" src="./lib/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript">	
+	$ ("document").ready (function() {
+		var leftmargin = 0;
+		var border = 3;
+		$("p").each(function() {
+		$(this).css("border", border + "px solid red");
+		$(this).css("margin-left", leftmargin);
+		border += 2;
+		leftmargin += 10;
+	});
+});
+	</script>
+		<style type="text/css">
+			.a { color: Navy; }
+			.b { color: Maroon; }
+		</style>
+</head>
+<body>
+	<ul id="list1">
+		<li class="a">item 1</li>
+		<li class="a">item 2</li>
+		<li class="b">item 3</li>
+		<li class="b">item 4</li>
+	</ul>
+	<p class="a">This ia paragraph 1</p>
+	<p>This ia paragraph 2</p>
+	<p class="b">This ia paragraph 3</p>
+	<p>This ia paragraph 4</p>
+</body>
+</html>
